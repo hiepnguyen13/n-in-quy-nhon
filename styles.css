@@ -1,0 +1,432 @@
+@media (max-width: 767px) {
+  .search {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+}
+@media (max-width: 767px) {
+  .card {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    padding: 8px;
+  }
+  .card__thumb {
+    width: 100%;
+    min-width: 0;
+    height: 180px;
+    border-radius: 10px 10px 0 0;
+  }
+  .card__body {
+    padding-top: 4px;
+  }
+  .search {
+    width: 100% !important;
+    min-width: 0;
+    box-sizing: border-box;
+    display: block;
+  }
+}
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --banner-start: #003f66;
+  --banner-mid: #338fcc;
+  --banner-end: #66b3e6;
+  --line: #0073a8;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family:
+    "Be Vietnam Pro",
+    system-ui,
+    -apple-system,
+    Segoe UI,
+    Roboto,
+    sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+
+main {
+  flex: 1;
+}
+
+.container {
+  width: min(1120px, 92vw);
+  margin: 0 auto;
+}
+
+.hero {
+  background:
+    linear-gradient(rgba(0, 32, 64, 0.55), rgba(0, 32, 64, 0.55)),
+    url("./image/banner.jpg") center/cover no-repeat;
+  color: #fff;
+  padding: 120px 0 100px;
+  position: relative;
+}
+
+.hero__content h1 {
+  font-size: clamp(2rem, 5vw, 3.1rem);
+  line-height: 1.15;
+  margin: 10px 0 12px;
+}
+
+.kicker {
+  margin: 0;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  opacity: 0.95;
+}
+
+.subtitle {
+  max-width: 780px;
+  margin: 0;
+  opacity: 0.95;
+}
+
+.quick-stats {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  max-width: 520px;
+}
+
+.stat {
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 14px;
+  padding: 12px 14px;
+}
+
+.stat span {
+  display: block;
+  font-size: 1.45rem;
+  font-weight: 800;
+}
+
+.stat small {
+  opacity: 0.9;
+}
+
+.section {
+  padding: 28px 0 40px;
+}
+
+.controls {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.tab {
+  appearance: none;
+  -webkit-appearance: none;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 10px 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.tab[data-filter="all"],
+.tab[data-filter="checkin"],
+.tab[data-filter="mass"],
+.tab[data-filter="food"],
+.tab[data-filter="special"] {
+  color: var(--text);
+  background: var(--surface);
+  border-color: var(--line);
+}
+
+/* Only .tab--checkin.is-active and .tab--all.is-active get #0073a8 background */
+.tab.is-active {
+  color: #fff;
+}
+.tab--checkin.is-active,
+.tab--all.is-active,
+.tab--mass.is-active {
+  background: #0073a8;
+  color: #fff;
+  border-color: #0073a8;
+}
+.tab--food.is-active {
+  background: #ff6666;
+  color: #fff;
+  border-color: #ff6666;
+  background: #0073a8;
+  border-color: #0073a8;
+}
+.tab--special.is-active {
+  background: #cc3333;
+  color: #fff;
+  border-color: #cc3333;
+}
+.tab--all.is-active {
+  background: #0073a8;
+  color: #fff;
+  border-color: #0073a8;
+}
+
+.tab:focus-visible {
+  outline: 2px solid #38bdf8;
+  outline-offset: 2px;
+}
+
+.search {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 11px 14px;
+  width: min(360px, 100%);
+  font-size: 0.98rem;
+}
+
+.results-info {
+  color: var(--muted);
+  margin-bottom: 14px;
+  font-size: 0.95rem;
+}
+
+.grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.card {
+  display: flex;
+  align-items: stretch;
+  gap: 14px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 12px;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05);
+}
+
+.card__thumb {
+  width: 300px;
+  min-width: 300px;
+  height: 186px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+.card__body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.card--visited {
+  /* Default fallback for visited */
+  border-width: 2px;
+}
+.card--visited.card--visited-type-checkin {
+  border-color: #0073a8;
+}
+.card--visited.card--visited-type-food {
+  border-color: #0073a8;
+  background: #eaf4fb;
+}
+.card--visited.card--visited-type-special {
+  border-color: #cc3333;
+}
+
+.card {
+  position: relative;
+}
+
+.card__head {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-bottom: 4px;
+}
+
+.card .pill {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  margin: 0;
+  z-index: 2;
+}
+
+.card h3 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.pill {
+  background: #111111;
+  color: #ffffff;
+  border: 1px solid #111111;
+  border-radius: 999px;
+  padding: 4px 11px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.pill--food {
+  background: #ff6666;
+  color: #fff;
+  border-color: #ff6666;
+  background: #0073a8;
+  border-color: #0073a8;
+}
+
+.pill--checkin {
+  background: #0073a8;
+  color: #fff;
+  border-color: #0073a8;
+}
+
+.pill--special {
+  background: #cc3333;
+  color: #ffffff;
+  border-color: #cc3333;
+}
+
+.card p {
+  margin: 6px 0;
+  color: var(--muted);
+  font-size: 0.94rem;
+}
+
+.meta {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-size: 0.84rem;
+  color: #334155;
+}
+
+.card__foot {
+  margin-top: auto;
+  display: flex;
+  gap: 12px;
+}
+
+.card__foot button {
+  pointer-events: auto;
+  z-index: 1;
+  position: relative;
+}
+
+.meta span {
+  background: #eff6ff;
+  border-radius: 8px;
+  padding: 5px 8px;
+}
+
+.visit-btn {
+  border: 1px solid #111111;
+  background: #ffffff;
+  color: #111111;
+  border-radius: 10px;
+  padding: 8px 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.visit-btn--checkin {
+  border-color: #0073a8;
+  color: #0073a8;
+}
+
+.visit-btn--checkin:hover,
+.visit-btn--checkin.is-visited {
+  border-color: #0073a8;
+  background: #0073a8;
+  color: #fff;
+}
+
+.visit-btn--food {
+  border-color: #0073a8;
+  color: #0073a8;
+}
+.visit-btn--food:hover,
+.visit-btn--food.is-visited {
+  border-color: #0073a8;
+  background: #0073a8;
+  color: #fff;
+}
+
+.visit-btn--special {
+  border-color: #cc3333;
+  color: #cc3333;
+}
+
+.visit-btn--special:hover,
+.visit-btn--special.is-visited {
+  border-color: #cc3333;
+  background: #cc3333;
+  color: #ffffff;
+}
+
+.card--empty {
+  display: block;
+}
+
+.footer {
+  border-top: 1px solid var(--line);
+  background: #fff;
+}
+
+.footer__inner {
+  padding: 16px 0 26px;
+  color: #64748b;
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 620px) {
+  .controls {
+    align-items: stretch;
+  }
+
+  .search {
+    width: 100%;
+  }
+
+  .card {
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .card__thumb {
+    width: 180px;
+    min-width: 180px;
+    height: 126px;
+  }
+}

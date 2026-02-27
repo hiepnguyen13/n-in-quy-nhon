@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quy Nhơn Đi Đâu Ăn Gì</title>
+    <meta
+      name="description"
+      content="Landing page gợi ý địa điểm ăn uống và check-in nổi bật tại Quy Nhơn, Bình Định."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div class="container hero__content">
+        <h1>Ngọc ở Quy Nhơn</h1>
+      </div>
+    </header>
+
+    <main class="container section">
+      <section class="controls">
+        <div class="tabs" role="tablist" aria-label="Lọc loại địa điểm">
+          <button class="tab tab--mass is-active" data-filter="mass" role="tab">
+            Giờ lễ
+          </button>
+          <button class="tab tab--checkin" data-filter="checkin" role="tab">
+            Tham quan
+          </button>
+          <button class="tab tab--food" data-filter="food" role="tab">
+            Ăn uống
+          </button>
+        </div>
+      </section>
+
+      <section>
+        <div id="placeGrid" class="grid"></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <p>© 2026 Quy Nhơn Trip List</p>
+        <p>made with ❤️</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
