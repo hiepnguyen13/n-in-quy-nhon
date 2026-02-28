@@ -418,6 +418,29 @@ const PLACES = [
   },
 ];
 
+const specialFood = [
+  {id: 1, name: "Bánh hỏi lòng heo"},
+  {id: 2, name: "Bún chả cá"},
+  {id: 3, name: "Bún rạm"},
+  {id: 4, name: "Bún tôm"},
+  {id: 5, name: "Bánh canh chả cá"},
+  {id: 6, name: "Bánh canh da heo"},
+  {id: 7, name: "Bánh xèo tôm nhảy"},
+  {id: 8, name: "Bánh khọt tôm mực"},
+  {id: 9, name: "Bánh bèo chén"},
+  {id: 10, name: "Bánh ít lá gai"},
+  {id: 11, name: "Bánh hồng"},
+  {id: 12, name: "Bánh dây"},
+  {id: 13, name: "Bánh mỳ chấm"},
+  {id: 14, name: "Tré"},
+  {id: 15, name: "Nem chua Bình Định"},
+  {id: 16, name: "Nem nướng"},
+  {id: 17, name: "Mực ngào tỏi ớt"},
+  {id: 18, name: "Gỏi cá mai"},
+  {id: 19, name: "Gỏi cá trích"},
+  {id: 20, name: "Chả ram tôm đất"},
+]
+
 const typeMap = {
   mass: "Giờ lễ",
   food: "Ăn uống",
@@ -429,8 +452,6 @@ const VISITED_STORAGE_KEY = "quyNhonVisitedPlaceIds";
 const placeGrid = document.getElementById("placeGrid");
 const resultsInfo = document.getElementById("resultsInfo");
 const tabs = [...document.querySelectorAll(".tab")];
-
-console.log({ placeGrid });
 
 const state = {
   filter: "mass",
@@ -493,12 +514,19 @@ function cardTemplate(place) {
       <img class="card__thumb" src="${imageSrc}" alt="${place.name}" loading="lazy" />
       <div class="card__body">
         <div class="card__head">
-          <h3>${place.name}</h3>
+          <h3 style="font-size:18px">${place.name}</h3>
         </div>
         ${place.type === "food" && place.bestSeller ? `<p>${place.bestSeller}</p>` : ""}
-        <p style="display:flex;align-items:center;gap:6px">
-          <a href="${place.map}" target="_blank" rel="noopener" style="color:#0073a8;text-decoration:underline">${place.address}</a>
-        </p>
+       <a href="${place.map}" target="_blank" rel="noopener" style="color:#0073a8;display:flex;align-items:center;gap:2px"> <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path 
+    d="M12 21C15 17.5 18 14 18 10C18 6.68629 15.3137 4 12 4C8.68629 4 6 6.68629 6 10C6 14 9 17.5 12 21Z" 
+   stroke="#0073A8"
+    stroke-width="2" 
+    stroke-linecap="round" 
+    stroke-linejoin="round"
+  />
+  <circle cx="12" cy="10" r="2" stroke="#0073A8" stroke-width="2"/>
+</svg> <span>${place.address}</span></a>
         <p>${stars}</p>
         ${
           place.type === "mass"
@@ -555,7 +583,21 @@ function render() {
     return;
   }
 
-  placeGrid.innerHTML = helloLine + filtered.map(cardTemplate).join("");
+
+
+  const specialFoodList = state.filter === "food" ? `
+  <div class="food-container">
+    <h3 style=" margin-left: 5px; margin-bottom: 16px">Đặc sản nên thử</h3>
+    <ul style="margin:0">
+      ${specialFood.map(({name}) => `<li>${name}</li>`).join("")}
+    </ul>
+  </div>
+  ` : "";
+
+  console.log({specialFoodList})
+
+
+  placeGrid.innerHTML = helloLine + filtered.map(cardTemplate).join("") + specialFoodList;
 }
 
 tabs.forEach((tab) => {

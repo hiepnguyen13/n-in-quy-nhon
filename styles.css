@@ -430,3 +430,29 @@ main {
     height: 126px;
   }
 }
+
+.food-container {
+  margin-top: 24px;
+}
+
+
+/* The Divider */
+.food-container ul {
+  list-style: none; /* Removes the default bullets */
+  padding-left: 0;
+}
+
+/* Individual items */
+.food-container li {
+  padding: 8px 15px;
+  margin-bottom: 8px;
+  border-radius: 12px;
+  border: 1px solid #0073A8;
+  /* transition: transform 0.2s ease; */
+}
+
+/* Hover effect for a little "pop" */
+/* .food-container li:hover {
+  transform: translateX(5px);
+  background-color: #f0f0f0;
+} */
